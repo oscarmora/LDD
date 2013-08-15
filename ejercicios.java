@@ -90,6 +90,7 @@ public class ejercicios {
         //traceInt(arrInPar);
 
         traceInt(arrOrden);
+        
     }
 
     public static void ejercicio24() {
