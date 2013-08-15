@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList; 
 import java.util.Arrays;
 import java.util.Comparator;
-
+import java.util.Random;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -28,7 +28,69 @@ public class ejercicios {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ejercicio26();
+        ejercicio26_2();
+    }
+
+    public static void ejercicio26_2() {
+        Scanner sc = new Scanner(System.in);
+
+        trace("Ingrese el tamaño del vector");
+
+        int n = sc.nextInt();
+        int par = 0, inpar = 0;
+
+        int arr[] = new int[n];
+
+        trace("Vector Sin Ordenar");
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = new Random().nextInt(100);
+            
+            if (esPar(arr[i])) {
+                par += 1;
+            trace("Vector[" + i + "]=" + arr[i] + " par");
+            } else {
+                inpar += 1;
+            trace("Vector[" + i + "]=" + arr[i] + " inpar");
+            }
+        }
+
+        int arrOrden[] = new int[n];
+        int arrPar[] = new int[par];
+        int arrInPar[] = new int[inpar];
+
+        int parI = 0;
+        int inparI = 0;
+
+        trace("Vector Ordenado");
+
+        for (int i = 0; i < n; i++) {
+            if (esPar(arr[i])) {
+                arrPar[parI] = arr[i];
+                parI++;
+            } else {
+                arrInPar[inparI] = arr[i];
+                inparI++;
+            }
+        }
+
+        Arrays.sort(arrPar);
+        Arrays.sort(arrInPar);
+
+        int _arrPar[] = arrPar.clone();
+
+        for (int i = 0; i < arrPar.length; i++) {
+            arrPar[i] = _arrPar[(arrPar.length - 1) - i];
+        }
+
+        System.arraycopy(arrPar, 0, arrOrden, 0, arrPar.length);
+        System.arraycopy(arrInPar, 0, arrOrden, arrPar.length, arrInPar.length);
+
+        //traceInt(arrPar);
+        //traceInt(arrInPar);
+
+        traceInt(arrOrden);
+        
     }
 
     public static void ejercicio26() {
