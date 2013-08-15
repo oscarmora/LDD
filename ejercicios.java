@@ -37,19 +37,24 @@ public class ejercicios {
         for (int i = 0; i < n; i++) {
             if (esPar(i)) {
                 arr[i] = i + 7;
-                sum += !esPar(arr[i]) ? arr[i] : 0;
             } else {
                 arr[i] = i - 1;
-                pro *= esPar(arr[i]) ? arr[i] : 1;
             }
 
-            System.out.print("Vector[" + i + "]=" + arr[i] + "\n");
+            sum += esPar(arr[i]) ? arr[i] : 0;
+            pro *= !esPar(arr[i]) ? arr[i] : 1;
+
+            trace("Vector[" + i + "]=" + arr[i] + "\n");
         }
 
-        System.out.print("La sumatoria es: " + sum + "\n");
-        System.out.print("La productoria es: " + pro + "\n");
+        trace("La sumatoria es: " + sum + "\n");
+        trace("La productoria es: " + pro + "\n");
 
 
+    }
+
+    public static void trace(String n) {
+        System.out.print(n);
     }
 
     public static boolean esPar(int n) {
