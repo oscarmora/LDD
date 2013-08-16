@@ -34,7 +34,7 @@ public class ejercicios {
     public static void ejercicio26_2() {
         Scanner sc = new Scanner(System.in);
 
-        trace("Ingrese el tamaño del vector");
+        trace("Ingrese el tamanio del vector");
 
         int n = sc.nextInt();
         int par = 0, inpar = 0;
@@ -91,6 +91,29 @@ public class ejercicios {
 
         traceInt(arrOrden);
         
+    }
+
+    public static void ordenar(int x[], int n, char o){
+        int  aux;
+
+        for (int i; i < n - 1; -++) {
+            
+            for (int j = i + 1; j < n; j++) {
+                if (0 == "a") {
+                    if (arr[i] > arr[j]) {
+                       aux = x[i];
+                       x[i] = x[j];
+                       x[j] = aux;
+                    }
+                }else{
+                    if (arr[i] > arr[j]) {
+                       aux = x[j];
+                       x[j] = x[i];
+                       x[i] = aux;
+                    }
+                }
+            }
+        }
     }
 
     public static void ejercicio26() {
