@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+
+//tarea 27,28,29
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -96,17 +99,17 @@ public class ejercicios {
     public static void ordenar(int x[], int n, char o){
         int  aux;
 
-        for (int i; i < n - 1; -++) {
+        for (int i = 0; i < n - 1; i++) {
             
             for (int j = i + 1; j < n; j++) {
-                if (0 == "a") {
-                    if (arr[i] > arr[j]) {
+                if (o == 'a') {
+                    if (x[i] > x[j]) {
                        aux = x[i];
                        x[i] = x[j];
                        x[j] = aux;
                     }
                 }else{
-                    if (arr[i] > arr[j]) {
+                    if (x[i] > x[j]) {
                        aux = x[j];
                        x[j] = x[i];
                        x[i] = aux;
