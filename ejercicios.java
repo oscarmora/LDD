@@ -31,7 +31,38 @@ public class ejercicios {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ejercicio26_2();
+        ejercicio27();
+    }
+
+    public static void ejercicio27() {
+        Scanner sc = new Scanner(System.in);
+
+        trace("Ingrese la frase: ");
+
+        String s = sc.nextLine();
+        //String s = "LA RUTA NOS APORTfO OTRO PASO NATURAL";
+        
+        s = s.trim();
+        s = s.replace(" ", "");
+
+        //trace(s);
+
+        String sArray[] = s.split("");
+
+        //trace(sArray.length);
+
+        for (int i = 1; i <  sArray.length; i++) {
+            if (sArray[i].equals(sArray[sArray.length - i])) {
+                trace(sArray[i] + " == " + sArray[sArray.length - i]);
+            }
+            else
+            {
+                trace("La frase NO es palindroma");
+                return;
+            }
+        }
+
+        trace("La frase SI es palindroma");
     }
 
     public static void ejercicio26_2() {
@@ -208,6 +239,10 @@ public class ejercicios {
     }
 
     public static void trace(String n) {
+        System.out.println(n);
+    }
+
+    public static void trace(int n) {
         System.out.println(n);
     }
 
