@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+import java.lang.Object;
 
 //tarea 27,28,29
 
@@ -40,9 +43,13 @@ public class ejercicios {
         trace("Ingrese la frase: ");
 
         String s = sc.nextLine();
-        //String s = "LA RUTA NOS APORTfO OTRO PASO NATURAL";
-        
+        //String s = "¿Acaso comeré mocos acá?";
+
+        s = unAccent(s);
+        trace(s);
+
         s = s.trim();
+
         s = s.replace(" ", "");
 
         //trace(s);
@@ -57,12 +64,41 @@ public class ejercicios {
             }
             else
             {
+                trace(sArray[i] + " != " + sArray[sArray.length - i]);
                 trace("La frase NO es palindroma");
                 return;
             }
         }
 
         trace("La frase SI es palindroma");
+    }
+
+    public static String unAccent(String s) {
+        
+
+        //s = s.toLowerCase();
+
+        s = s.replace("á","a");
+        s = s.replace("é","e");
+        s = s.replace("í","i");
+        s = s.replace("ó","o");
+        s = s.replace("ú","u");
+
+        s = s.replace("É","E");
+        s = s.replace("Ó","O");
+        s = s.replace("Ú","U");
+
+        s = s.replaceAll("[¿?.,;:]","");
+
+        s = s.toUpperCase();
+
+        return s;
+
+        /*// Descomposición canónica
+        String normalized = Normalizer.normalize(s, Normalizer.Form.NFD);
+        // Nos quedamos únicamente con los caracteres ASCII
+        Pattern pattern = Pattern.compile("\\P{ASCII}");
+        return pattern.matcher(normalized).replaceAll("");*/
     }
 
     public static void ejercicio26_2() {
