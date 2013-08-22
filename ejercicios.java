@@ -34,8 +34,78 @@ public class ejercicios {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ejercicio27();
+        ejercicio28();
     }
+
+    public static void ejercicio28() {
+        Scanner sc = new Scanner(System.in);
+
+        trace("Ingrese la viga: ");
+
+        //String s = sc.nextLine();
+        String s = "#====*====================*==";
+
+        trace(s);
+
+        int r1 = 10, r2 = 30, r3 = 90, l = 1, c = 1, r;
+
+        int nsegmentos;
+
+        if(!validarViga(s)) return;
+        nsegmentos = asignarSegmentos(s);
+
+        if(s.substring(0).equals("%")){
+            r = r1;
+        }else if(s.substring(0).equals("&")){
+            r = r2;
+        }else{
+            r = r3;
+        }
+
+        if((r - nsegmentos) <= 0){
+            trace("La viga NO soporta el peso!");
+        }else{
+            trace("La viga soporta el peso!");
+        }
+
+    }
+
+    public static boolean validarViga(String s) {
+        if(!s.matches("(%|&|#)(.*)")){
+            trace("La viga esta mal construida");
+            return false;
+        }
+
+        return true;
+    };
+
+    public static int asignarSegmentos(String s) {
+        String lArray[] = s.split("");
+        int peso = 0;
+        int pesoc = 0;
+        int totalpeso = 0;
+
+        for (int i = 1;i < lArray.length ; i++) {
+            trace("---" + lArray[i]);
+            if (lArray[i].equals("=") && !lArray[i].matches("(%|&|#)")) {
+                peso ++;
+                totalpeso += peso;
+            trace("---/" + peso);
+            }else if(lArray[i].equals("*") && !lArray[i].matches("(%|&|#)")){
+                peso = 0;
+                pesoc++;
+            }else if(!lArray[i].matches("(%|&|#)")){
+                trace("La viga esta mal construida");
+                return -1;
+            }
+        }
+
+        trace("peso:" + peso);
+        trace("pesoc:" + pesoc);
+        trace("total peso:" + totalpeso);
+
+        return totalpeso+pesoc;
+    };
 
     public static void ejercicio27() {
         Scanner sc = new Scanner(System.in);
@@ -46,7 +116,6 @@ public class ejercicios {
         //String s = "¿Acaso comeré mocos acá?";
 
         s = unAccent(s);
-        trace(s);
 
         s = s.trim();
 
@@ -281,6 +350,11 @@ public class ejercicios {
     public static void trace(int n) {
         System.out.println(n);
     }
+
+    public static void trace(boolean n) {
+        System.out.println(n);
+    }
+
 
     public static void traceInt(int[] n) {
         for (int i = 0; i < n.length; i++) {
